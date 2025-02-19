@@ -1,50 +1,87 @@
-# Welcome to your Expo app 👋
+# React Native To-Do App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A simple React Native To-Do app with API integration built using TypeScript and React Hooks.
 
-## Get started
+## Features
 
-1. Install dependencies
+- View tasks fetched from a mock API
+- Add new tasks
+- Mark tasks as completed
+- Delete tasks
+- TypeScript support
+- Error handling with user feedback
+- Optimistic UI updates
 
+## Setup Instructions
+
+1. **Clone the repository:**
+   ```bash
+   git clone [repository-url]
+   cd [repository-name]
+   ```
+
+2. **Install dependencies:**
    ```bash
    npm install
+   # or
+   yarn install
    ```
 
-2. Start the app
-
+3. **Run the app:**
    ```bash
-    npx expo start
+   # For iOS
+   npx react-native run-ios
+   
+   # For Android
+   npx react-native run-android
    ```
 
-In the output, you'll find options to open the app in a
+## Project Structure
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+src/
+├── components/
+│   └── TaskItem.tsx     # Reusable task item component
+├── screens/
+│   └── HomeScreen.tsx   # Main screen with task management
+├── services/
+│   └── api.ts           # API integration
+├── types/
+│   └── Task.ts          # TypeScript definitions
+└── App.tsx              # Application entry point
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## API Endpoints
 
-## Learn more
+The app uses JSONPlaceholder as a mock API with the following endpoints:
 
-To learn more about developing your project with Expo, look at the following resources:
+- Fetch tasks: `GET https://jsonplaceholder.typicode.com/todos?_limit=5`
+- Add task: `POST https://jsonplaceholder.typicode.com/todos`
+- Delete task: `DELETE https://jsonplaceholder.typicode.com/todos/{id}`
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Technical Details
 
-## Join the community
+- Built with React Native and TypeScript
+- Uses React Hooks for state management
+- Implements optimistic updates for better UX
+- Includes error handling and rollback mechanisms
+- Follows React Native best practices
 
-Join our community of developers creating universal apps.
+## Development
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+The project uses TypeScript for type safety and better development experience. All components are functional components using React Hooks for state management and side effects.
+
+## Error Handling
+
+The app includes comprehensive error handling:
+- API errors are caught and displayed to users
+- Failed operations (add/delete) are rolled back automatically
+- Optimistic updates ensure smooth user experience
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
