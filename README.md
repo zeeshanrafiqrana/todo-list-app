@@ -1,87 +1,96 @@
-# React Native To-Do App
+# React Native Todo App with Expo
 
-A simple React Native To-Do app with API integration built using TypeScript and React Hooks.
+A simple Todo List application built with React Native, Expo, TypeScript, and React Hooks. The app demonstrates modern React Native development practices with API integration.
 
 ## Features
 
-- View tasks fetched from a mock API
-- Add new tasks
+- View tasks fetched from JSONPlaceholder API
+- Add new tasks with optimistic updates
 - Mark tasks as completed
-- Delete tasks
+- Delete tasks with rollback on error
+- Pull-to-refresh functionality
+- Loading states and error handling
+- Keyboard handling
 - TypeScript support
-- Error handling with user feedback
-- Optimistic UI updates
-
-## Setup Instructions
-
-1. **Clone the repository:**
-   ```bash
-   git clone [repository-url]
-   cd [repository-name]
-   ```
-
-2. **Install dependencies:**
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
-
-3. **Run the app:**
-   ```bash
-   # For iOS
-   npx react-native run-ios
-   
-   # For Android
-   npx react-native run-android
-   ```
 
 ## Project Structure
 
 ```
-src/
-├── components/
-│   └── TaskItem.tsx     # Reusable task item component
-├── screens/
-│   └── HomeScreen.tsx   # Main screen with task management
-├── services/
-│   └── api.ts           # API integration
-├── types/
-│   └── Task.ts          # TypeScript definitions
-└── App.tsx              # Application entry point
+todolistapp/
+├── src/
+│   ├── components/
+│   │   └── TaskItem.tsx      # Reusable task component
+│   ├── screens/
+│   │   └── HomeScreen.tsx    # Main screen with task management
+│   ├── services/
+│   │   └── api.ts           # API integration layer
+│   ├── types/
+│   │   └── Task.ts          # TypeScript definitions
+│   └── App.tsx              # Root component
+├── app/
+│   ├── (todo)/
+│   │   ├── _layout.tsx      # Todo route layout
+│   │   └── index.tsx        # Todo screen wrapper
+│   └── _layout.tsx          # Root layout with navigation
+└── package.json
 ```
+
+## Technical Stack
+
+- React Native with Expo
+- TypeScript for type safety
+- React Hooks for state management
+- Expo Router for navigation
+- JSONPlaceholder API for mock data
+
+## Setup Instructions
+
+1. **Install Dependencies:**
+   ```bash
+   npm install
+   ```
+
+2. **Start the Development Server:**
+   ```bash
+   npm start
+   ```
+
+3. **Run the App:**
+   - iOS: Press 'i' to open in iOS simulator
+   - Android: Press 'a' to open in Android emulator
+   - Scan QR code with Expo Go app on your device
 
 ## API Endpoints
 
-The app uses JSONPlaceholder as a mock API with the following endpoints:
+The app uses JSONPlaceholder API for mock data:
+- GET /todos?_limit=5 - Fetch tasks
+- POST /todos - Add new task
+- DELETE /todos/{id} - Delete task
 
-- Fetch tasks: `GET https://jsonplaceholder.typicode.com/todos?_limit=5`
-- Add task: `POST https://jsonplaceholder.typicode.com/todos`
-- Delete task: `DELETE https://jsonplaceholder.typicode.com/todos/{id}`
+## Implementation Details
 
-## Technical Details
-
-- Built with React Native and TypeScript
-- Uses React Hooks for state management
+### State Management
+- Uses React's useState and useEffect hooks
 - Implements optimistic updates for better UX
-- Includes error handling and rollback mechanisms
+- Handles loading and error states
+
+### UI Components
+- Custom TaskItem component for task display
+- Loading indicators and error messages
+- Pull-to-refresh functionality
+- Keyboard-aware input handling
+
+### Error Handling
+- Comprehensive error handling for API requests
+- User-friendly error messages
+- Rollback for failed operations
+
+### Code Quality
+- TypeScript for type safety
+- Proper component organization
+- Clean and maintainable code structure
 - Follows React Native best practices
 
 ## Development
 
-The project uses TypeScript for type safety and better development experience. All components are functional components using React Hooks for state management and side effects.
-
-## Error Handling
-
-The app includes comprehensive error handling:
-- API errors are caught and displayed to users
-- Failed operations (add/delete) are rolled back automatically
-- Optimistic updates ensure smooth user experience
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+The project uses TypeScript and follows modern React Native development practices. All components are functional components using React Hooks for state management and side effects.
