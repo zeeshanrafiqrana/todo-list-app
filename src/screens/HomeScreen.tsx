@@ -4,9 +4,10 @@ import {
   Text,
   FlatList,
   TextInput,
-  Button,
+  TouchableOpacity,
   StyleSheet,
   Alert,
+  ActivityIndicator,
 } from 'react-native';
 import TaskItem from '../components/TaskItem';
 import { Task } from '../types/Task';
@@ -84,7 +85,8 @@ const HomeScreen: React.FC = () => {
   if (loading) {
     return (
       <View style={styles.center}>
-        <Text>Loading tasks...</Text>
+        <ActivityIndicator size="large" color="#0000ff" />
+        <Text style={styles.loadingText}>Loading tasks...</Text>
       </View>
     );
   }
@@ -98,7 +100,9 @@ const HomeScreen: React.FC = () => {
           value={newTaskTitle}
           onChangeText={setNewTaskTitle}
         />
-        <Button title="Add Task" onPress={handleAddTask} />
+        <TouchableOpacity style={styles.addButton} onPress={handleAddTask}>
+          <Text style={styles.addButtonText}>Add Task</Text>
+        </TouchableOpacity>
       </View>
       <FlatList
         data={tasks}
@@ -116,6 +120,22 @@ const HomeScreen: React.FC = () => {
 };
 
 const styles = StyleSheet.create({
+  loadingText: {
+    marginTop: 10,
+    fontSize: 16,
+  },
+  addButton: {
+    backgroundColor: '#007AFF',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 5,
+    marginLeft: 10,
+  },
+  addButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: '600',
+  },
   container: {
     flex: 1,
     padding: 16,

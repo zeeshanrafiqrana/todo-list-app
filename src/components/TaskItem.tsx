@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Task } from '../types/Task';
-import CheckBox from '@react-native-community/checkbox';
+import Checkbox from 'expo-checkbox';
 
 interface TaskItemProps {
   task: Task;
@@ -12,9 +12,10 @@ interface TaskItemProps {
 const TaskItem: React.FC<TaskItemProps> = ({ task, onToggle, onDelete }) => {
   return (
     <View style={styles.container}>
-      <CheckBox
+      <Checkbox
         value={task.completed}
         onValueChange={() => onToggle(task.id)}
+        style={styles.checkbox}
       />
       <Text style={[styles.title, task.completed && styles.completed]}>
         {task.title}
@@ -27,6 +28,9 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onToggle, onDelete }) => {
 };
 
 const styles = StyleSheet.create({
+  checkbox: {
+    margin: 8,
+  },
   container: {
     flexDirection: 'row',
     alignItems: 'center',
